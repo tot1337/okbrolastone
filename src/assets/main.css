@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap');
+
+@import './base.css';
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: theme('colors.red-dark');
+  color: theme('colors.red-text');
+}
+
+::selection {
+  background: theme('colors.red-medium');
+  color: theme('colors.red-text');
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.red-dark');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.red-medium');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.red-accent');
+}
+
+/* Optimized transitions for Firefox performance */
+a, button, [role="button"], .transition-colors {
+  transition-property: color, background-color, border-color, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  will-change: transform;
+}
+
+.transition-shadow {
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid theme('colors.red-accent');
+  outline-offset: 2px;
+}
+
+/* Glass morphism utility - Firefox optimized */
+.glass {
+  background: theme('colors.red-dark');
+  backdrop-filter: blur(var(--tw-backdrop-blur)) saturate(180%);
+  border: 1px solid theme('colors.red-medium');
+}
+
+.glass-panel {
+  background: theme('colors.red-medium');
+  backdrop-filter: blur(var(--tw-backdrop-blur)) saturate(180%);
+  border: 1px solid theme('colors.red-medium');
+}
+
+.glow-shadow {
+  box-shadow: 0 0 10px theme('colors.red-accent');
+}
+
+/* Enhanced glass effect for browsers that support backdrop-filter well */
+@supports (backdrop-filter: blur(10px)) {
+  .glass {
+    backdrop-filter: blur(10px);
+    background: rgba(49, 50, 68, 0.3);
+  }
+}
+
+/* Firefox-specific glass fallback */
+@-moz-document url-prefix() {
+  .glass {
+    background: rgba(49, 50, 68, 0.5);
+    backdrop-filter: none;
+  }
+}
+
+/* Optimized hover glow effect */
+.hover-glow {
+  transition: box-shadow 0.3s ease-out;
+}
+
+.hover-glow:hover {
+  outline: 2px solid theme('colors.red-accent');
+  outline-offset: 2px;
+}
